@@ -9,7 +9,25 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import ga from 'ga-react-router';
+import routes from './routes';
+import { syncReduxAndRouter } from 'redux-simple-router';
+
+
+/* 异步切换网页的标题 */
+/*syncReduxAndRouter(browserHistory, store);
+browserHistory.listen(location => {
+  ga('send', {
+    'hitType': 'pageview',
+    'page': location.pathname,
+    'title': location.pathname,
+  });
+});*/
 
 ReactDOM.render(
-	<h1>基于react.js的一个小测试，又踩了个坑</h1>,document.getElementById('root')
+	<Router history={browserHistory}>
+        {routes}
+      </Router>,
+	document.getElementById('root')
 	);
