@@ -15,6 +15,8 @@ app.set('view engine', 'ejs');
 
 //配置静态资源路径
 app.use(express.static('cloud/public'));
+//多次配置静态资源路径，配置单页面为静态资源路径
+app.use('/home', express.static('spa'));
 
 // 加载云代码方法
 app.use(cloud);
@@ -55,6 +57,9 @@ app.get('/', function(req, res) {
 // 可以将一类的路由单独保存在一个文件中
 app.use('/todos', todos);
 
+app.use('/home',function(req, res) {
+  res.redirect('/spa/index.html');
+});
 
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获
