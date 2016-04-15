@@ -16,7 +16,7 @@ export class NotFound extends Component {
           <h1>404</h1>
           <Link to="/home/test"> 测试页面 </Link>
           <br />
-          <Link to="/home"> 首页 </Link>
+          <Link to="/"> 首页 </Link>
       </div>
     );
   }

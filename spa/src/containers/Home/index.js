@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import 'babel-polyfill'
+import React,{ Component } from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link } from 'react-router';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import App from './containers/App'
+import { createStore } from 'redux'
+import configureStore from './store/configureStore'
+import 'todomvc-app-css/index.css'
 
-import "antd/lib/index.css";
-import { Button } from 'antd';
-
+const store = configureStore()
 
 export class Home extends Component {
   render() {
     return (
-      <div>
-            <h1>我是首页哦哦哦</h1>
-            <Button type="primary" size="large">大号按钮</Button>
-            <Link to="/home/test" >测试页面</Link>
-            <br/>
-            <Link to="/home/no">未找到的页面</Link>
-      </div>
+        <Provider store={store}>
+          <App />
+        </Provider>
     );
   }
 }
